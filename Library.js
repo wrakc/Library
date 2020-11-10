@@ -6,17 +6,7 @@ function Book(title, author, number_pages, read) {
     this.number_pages = number_pages;
     this.read = read;
 }
-// this.check_read = function (read) {
-//     if (read == true) {
-//         return 'already read'
-//     } else {
-//         return 'not read yet'
-//     }
-// }
 
-// this.info = function () {
-//     return `${this.title} by ${this.author}, ${this.number_pages} pages, ${this.check_read(this.read)}.`
-// }
 Book.prototype.check_read = function (read) {
     if (read == true) {
         return 'already read'
@@ -29,6 +19,7 @@ Book.prototype.info = function () {
 }
 
 const a = new Book("Harry Potter", "IDK", 300, true);
+const b = new Book("Rails", "IDK", 300, true);
 console.log(a.info());
 
 function addBookToLibrary(book) {
@@ -54,7 +45,19 @@ function displayBooks(array) {
     }
 }
 
+
+// function setUserName() { 
+//     let title = prompt('Please enter the title of the book.'); 
+//     let author = prompt('Please enter the name of the author.');
+//     let pages = prompt('How many pages do we have in the book?');
+//     let read = prompt()
+//     localStorage.setItem('name', myName); 
+//     myHeading.textContent = 'Mozilla is cool, ' + myName; } 
+
+
+
 addBookToLibrary(a);
+addBookToLibrary(b);
 displayBooks(myLibrary);
 console.log(myLibrary);
 

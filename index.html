@@ -9,8 +9,22 @@
 </head>
 
 <body id="main">
-
+    <form action="">
+        <label>Title:
+            <input type="text" name="title" id="title">
+        </label>
+        <label>Author:
+            <input type="text" name="author" id="author">
+        </label>
+        <label> Number of Pages:
+            <input type="number" name="pages" id="pages">
+        </label>
+        <select name="read" id="read">
+            <option value="true">Read</option>
+            <option value="false">Not Read</option>
+        </select>
+        <button id='btn-library' type="submit">Add Book to Library</button>
+    </form>
     <script src="Library.js"></script>
 </body>
-
 </html>
