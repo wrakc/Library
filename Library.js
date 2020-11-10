@@ -31,6 +31,10 @@ Book.prototype.info = function () {
 const a = new Book("Harry Potter", "IDK", 300, true);
 console.log(a.info());
 
-function addBookToLibrary() {
-    // do stuff here
+function addBookToLibrary(book) {
+    myLibrary.push(book);
 }
+
+addBookToLibrary(a);
+console.log(myLibrary);
+
