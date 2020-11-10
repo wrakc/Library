@@ -45,16 +45,19 @@ function displayBooks(array) {
     }
 }
 
+function newBook() {
+    let title = document.getElementById('title').value;
+    let author = document.getElementById('author').value;
+    let pages = document.getElementById('pages').value;
+    let read = document.getElementById('read').value;
+    const bookNew = new Book(title, author, pages, read);
+    addBookToLibrary(bookNew);
+}
 
-// function setUserName() { 
-//     let title = prompt('Please enter the title of the book.'); 
-//     let author = prompt('Please enter the name of the author.');
-//     let pages = prompt('How many pages do we have in the book?');
-//     let read = prompt()
-//     localStorage.setItem('name', myName); 
-//     myHeading.textContent = 'Mozilla is cool, ' + myName; } 
-
-
+document.getElementById("btn-library").addEventListener("click", function() {
+    newBook();
+});
+// document.getElementById('btn-library').onclick = newBook();
 
 addBookToLibrary(a);
 addBookToLibrary(b);
