@@ -35,6 +35,26 @@ function addBookToLibrary(book) {
     myLibrary.push(book);
 }
 
+function displayBooks(array) {
+    for (let book in array) {
+
+        const container = document.createElement('div');
+        const title = document.createElement('p');
+        const author = document.createElement('p');
+        const pages = document.createElement('p');
+        console.log('title');
+        console.log();
+        title.textContent = array[book].title;
+        author.textContent = array[book].author;
+        pages.textContent = array[book].number_pages;
+        container.appendChild(title);
+        container.appendChild(author);
+        container.appendChild(pages);
+        document.getElementById('main').appendChild(container);
+    }
+}
+
 addBookToLibrary(a);
+displayBooks(myLibrary);
 console.log(myLibrary);
 
