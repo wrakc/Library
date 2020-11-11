@@ -26,42 +26,6 @@ function addBookToLibrary(book) {
     myLibrary.push(book);
 }
 
-function displayBooks(array) {
-    for (let book in array) {
-
-        const container = document.createElement('div');
-        const title = document.createElement('p');
-        const author = document.createElement('p');
-        const pages = document.createElement('p');
-        console.log('title');
-        console.log();
-        title.textContent = array[book].title;
-        author.textContent = array[book].author;
-        pages.textContent = array[book].number_pages;
-        container.appendChild(title);
-        container.appendChild(author);
-        container.appendChild(pages);
-        document.getElementById('main').appendChild(container);
-    }
-}
-
-function update(book) {
-
-    const container = document.createElement('div');
-    const title = document.createElement('p');
-    const author = document.createElement('p');
-    const pages = document.createElement('p');
-    console.log('title');
-    console.log();
-    title.textContent = book.title;
-    author.textContent = book.author;
-    pages.textContent = book.number_pages;
-    container.appendChild(title);
-    container.appendChild(author);
-    container.appendChild(pages);
-    document.getElementById('main').appendChild(container);
-}
-
 function newBook() {
     let title = document.getElementById('title').value;
     let author = document.getElementById('author').value;
@@ -69,13 +33,24 @@ function newBook() {
     let read = document.getElementById('read').value;
     const bookNew = new Book(title, author, pages, read);
     addBookToLibrary(bookNew);
+    form = document.getElementById("form");
+    form.classList.toggle("hidden");
     update(myLibrary[myLibrary.length - 1]);
+}
+
+function showForm() {
+    form = document.getElementById("form");
+    form.classList.toggle("hidden");
 }
 
 document.getElementById("btn-library").addEventListener("click", function () {
     newBook();
 });
-// document.getElementById('btn-library').onclick = newBook();
+
+document.getElementById("new-book").addEventListener("click", function () {
+    showForm();
+});
+
 
 addBookToLibrary(a);
 addBookToLibrary(b);
