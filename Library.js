@@ -45,6 +45,23 @@ function displayBooks(array) {
     }
 }
 
+function update(book) {
+
+    const container = document.createElement('div');
+    const title = document.createElement('p');
+    const author = document.createElement('p');
+    const pages = document.createElement('p');
+    console.log('title');
+    console.log();
+    title.textContent = book.title;
+    author.textContent = book.author;
+    pages.textContent = book.number_pages;
+    container.appendChild(title);
+    container.appendChild(author);
+    container.appendChild(pages);
+    document.getElementById('main').appendChild(container);
+}
+
 function newBook() {
     let title = document.getElementById('title').value;
     let author = document.getElementById('author').value;
@@ -52,9 +69,10 @@ function newBook() {
     let read = document.getElementById('read').value;
     const bookNew = new Book(title, author, pages, read);
     addBookToLibrary(bookNew);
+    update(myLibrary[myLibrary.length - 1]);
 }
 
-document.getElementById("btn-library").addEventListener("click", function() {
+document.getElementById("btn-library").addEventListener("click", function () {
     newBook();
 });
 // document.getElementById('btn-library').onclick = newBook();
