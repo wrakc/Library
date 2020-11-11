@@ -43,6 +43,9 @@ function showForm() {
     form.classList.toggle("hidden");
 }
 
+function deleteArray(book) {
+    myLibrary.indexOf(book.title);
+}
 document.getElementById("btn-library").addEventListener("click", function () {
     newBook();
 });
@@ -51,9 +54,31 @@ document.getElementById("new-book").addEventListener("click", function () {
     showForm();
 });
 
+function deleteDiv(e) {
+    let b = e.id;
+    if (b != "new-book") {
+        console.log(b);
+        let k = b.substring(7, b.length);
+        deleteBook(k);
+        deleteArray(k);
+    }
+};
 
 addBookToLibrary(a);
 addBookToLibrary(b);
-displayBooks(myLibrary);
 console.log(myLibrary);
+displayBooks(myLibrary);
+
+objects = Array.from(document.getElementsByTagName("button"));
+
+for (var i = 0; i < objects.length; i++) {
+    objects[i];
+    document.getElementById(objects[i].id).addEventListener("click", function (e) {
+        e = e.target || el.srcElement;
+        deleteDiv(e);
+    })
+};
+
+
+
 
