@@ -50,9 +50,9 @@
 
 Project: JavaScript project, small library app. [Assignment link](https://www.theodinproject.com/courses/javascript/lessons/library)
 
-Visit the finished project website: https://whispering-basin-25539.herokuapp.com
+Visit the finished project website: https://raw.githack.com/jdmartinez1062/Library/feature/library/index.html
 <div style="text-align:center">
-  <a href="https://rawcdn.githack.com/jdmartinez1062/Library/tree/feature/library">
+  <a href="https://raw.githack.com/jdmartinez1062/Library/feature/library/index.html">
       <img src="screenshot.png" width="100%">
   </a>
 </div>
