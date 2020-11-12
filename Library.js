@@ -46,15 +46,12 @@ function showForm() {
 function deleteArray(book) {
     myLibrary.indexOf(book.title);
 }
-document.getElementById("btn-library").addEventListener("click", function () {
-    newBook();
-});
+document.getElementById("btn-library").addEventListener("click", newBook);
 
-document.getElementById("new-book").addEventListener("click", function () {
-    showForm();
-});
+document.getElementById("new-book").addEventListener("click", showForm);
 
 function deleteDiv(e) {
+    e = e.target || e.srcElement;
     let b = e.id;
     if (b != "new-book") {
         console.log(b);
@@ -72,11 +69,7 @@ displayBooks(myLibrary);
 objects = Array.from(document.getElementsByTagName("button"));
 
 for (var i = 0; i < objects.length; i++) {
-    objects[i];
-    document.getElementById(objects[i].id).addEventListener("click", function (e) {
-        e = e.target || el.srcElement;
-        deleteDiv(e);
-    })
+    document.getElementById(objects[i].id).addEventListener("click", deleteDiv);
 };
 
 
