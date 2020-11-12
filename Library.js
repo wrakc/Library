@@ -1,129 +1,126 @@
-let myLibrary = [];
+const myLibrary = [];
 
-function Book(title, author, number_pages, read, id) {
-    this.title = title;
-    this.author = author;
-    this.number_pages = number_pages;
-    this.read = read;
-    this.id = id;
+function Book(title, author, numberPages, read, id) {
+  this.title = title;
+  this.author = author;
+  this.number_pages = numberPages;
+  this.read = read;
+  this.id = id;
 }
 
-Book.prototype.check_read = function () {
-    if (this.read == true) {
-        return 'already read'
-    } else {
-        return 'not read yet'
-    }
-}
+Book.prototype.check_read = function checkRead() {
+  if (this.read === true) {
+    return 'already read';
+  }
+  return 'not read yet';
+};
 
-Book.prototype.opposite_status = function () {
-    if (this.read == true) {
-        return 'Change to "Not read yet"'
-    } else {
-        return 'Change to "Read"'
-    }
-}
+Book.prototype.opposite_status = function oppositeStatus() {
+  if (this.read === true) {
+    return 'Change to "Not read yet"';
+  }
+  return 'Change to "Read"';
+};
 
 
-Book.prototype.toggle_read = function () {
-    console.log(this.read ? false : true)
-    this.read = this.read ? false : true;
-}
+Book.prototype.toggle_read = function toggleRead() {
+  this.read = !this.read;
+};
 
-Book.prototype.info = function () {
-    return `${this.title} by ${this.author}, ${this.number_pages} pages, ${this.check_read(this.read)}.`
-}
+Book.prototype.info = function info() {
+  return `${this.title} by ${this.author}, ${this.number_pages} pages, ${this.check_read(this.read)}.`;
+};
 
-const a = new Book("Harry Potter", "IDK", 300, true, 0);
-const b = new Book("Rails", "IDK", 300, true, 1);
-console.log(a.info());
+const a = new Book('Harry Potter', 'IDK', 300, true, 0);
+const b = new Book('Rails', 'IDK', 300, true, 1);
+
 
 function addBookToLibrary(book) {
-    myLibrary.push(book);
-}
-
-function newBook() {
-    let title = document.getElementById('title').value;
-    let author = document.getElementById('author').value;
-    let pages = document.getElementById('pages').value;
-    let read = document.getElementById('read').value;
-    let id = checkFirstId(myLibrary);
-    read = changeReadValue(read);
-    const bookNew = new Book(title, author, pages, read, id);
-    addBookToLibrary(bookNew);
-    form = document.getElementById("form");
-    form.classList.toggle("hidden");
-    update(myLibrary[myLibrary.length - 1]);
-}
-
-function showForm() {
-    form = document.getElementById("form");
-    form.classList.toggle("hidden");
-}
-
-function changeReadValue(value) {
-    if (value == 'true') {
-        return true;
-    } else {
-        return false;
-    };
+  myLibrary.push(book);
 }
 
 function checkFirstId(element) {
-    if (element.length == 0) {
-        return 0
-    } else {
-        return element[element.length - 1].id + 1;
+  if (element.length === 0) {
+    return 0;
+  }
+  return element[element.length - 1].id + 1;
+}
+
+function changeReadValue(value) {
+  if (value === 'true') {
+    return true;
+  }
+  return false;
+}
+
+function newBook() {
+  const title = document.getElementById('title').value;
+  const author = document.getElementById('author').value;
+  const pages = document.getElementById('pages').value;
+  let read = document.getElementById('read').value;
+  const id = checkFirstId(myLibrary);
+  read = changeReadValue(read);
+  const bookNew = new Book(title, author, pages, read, id);
+  addBookToLibrary(bookNew);
+  const form = document.getElementById('form');
+  form.classList.toggle('hidden');
+  // eslint-disable-next-line no-undef
+  update(myLibrary[myLibrary.length - 1]);
+}
+
+function findObject(k) {
+  for (let i = 0; i < myLibrary.length; i += 1) {
+    // eslint-disable-next-line eqeqeq
+    if (myLibrary[i].id === parseInt(k, 10)) {
+      return myLibrary[i];
     }
+  }
+  return null;
 }
 
+function showForm() {
+  const form = document.getElementById('form');
+  form.classList.toggle('hidden');
+}
+
+
+// eslint-disable-next-line no-unused-vars
 function deleteArray(index) {
-    book = findObject(index);
-    myLibrary.splice(book.id, 1);
+  const book = findObject(index);
+  myLibrary.splice(book.id, 1);
 }
 
-document.getElementById("btn-library").addEventListener("click", newBook);
+document.getElementById('btn-library').addEventListener('click', newBook);
 
-document.getElementById("new-book").addEventListener("click", showForm);
+document.getElementById('new-book').addEventListener('click', showForm);
 
 function deleteDiv(e) {
-    e = e.target || e.srcElement;
-    let b = e.id;
-    let k = b.substring(7, b.length);
-    console.log("K")
-    console.log(k)
-    deleteBook(k);
-
-};
+  e = e.target || e.srcElement;
+  const b = e.id;
+  const k = b.substring(7, b.length);
+  // eslint-disable-next-line no-undef
+  deleteBook(k);
+}
 
 addBookToLibrary(a);
 addBookToLibrary(b);
-console.log(myLibrary);
+// eslint-disable-next-line no-undef
 displayBooks(myLibrary);
 
-objects = Array.from(document.getElementsByClassName("delete"));
-objectsRead = Array.from(document.getElementsByClassName("read"));
+const objects = Array.from(document.getElementsByClassName('delete'));
+const objectsRead = Array.from(document.getElementsByClassName('read'));
 
-function findObject(k) {
-    for (var i = 0; i < myLibrary.length; i++) {
-        if (myLibrary[i].id == k) {
-            return myLibrary[i];
-        }
-    }
+
+for (let i = 0; i < objects.length; i += 1) {
+  document.getElementById(objects[i].id).addEventListener('click', deleteDiv);
+  // eslint-disable-next-line no-loop-func
+  document.getElementById(objectsRead[i].id).addEventListener('click', (e) => {
+    e = e.target;
+    const b = e.id;
+    const k = b.substring(11, b.length);
+    const object = findObject(k);
+    object.toggle_read();
+    // eslint-disable-next-line no-undef
+    updateReadStatus(object);
+  });
 }
-for (var i = 0; i < objects.length; i++) {
-    document.getElementById(objects[i].id).addEventListener("click", deleteDiv);
-    document.getElementById(objectsRead[i].id).addEventListener("click", function (e) {
-        e = e.target || e.srcElement;
-        console.log(e);
-        // e.toggle_read();
-        let b = e.id;
-        console.log(b);
-        let k = b.substring(11, b.length);
-        console.log(k)
-        let object = findObject(k);
-        object.toggle_read();
-        console.log(object);
-        updateReadStatus(object);
-    });
-};

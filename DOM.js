@@ -1,54 +1,28 @@
+// eslint-disable-next-line no-unused-vars
 function displayBooks(array) {
-    for (let book in array) {
-        const container = document.createElement('div');
-        container.id = "container-" + array[book].id;
-        const title = document.createElement('p');
-        const author = document.createElement('p');
-        const pages = document.createElement('p');
-        const del = document.createElement('button');
-        const changeReadStatus = document.createElement('button');
-        const readStatus = document.createElement('p');
-        del.textContent = "Delete book";
-        del.classList = "delete";
-        changeReadStatus.classList = "read"
-        readStatus.id = "p-read-" + array[book].id;
-        changeReadStatus.id = "readButton-" + array[book].id;
-        del.id = "button-" + array[book].id;
-        title.textContent = array[book].title;
-        author.textContent = array[book].author;
-        pages.textContent = array[book].number_pages;
-        readStatus.textContent = array[book].check_read();
-        changeReadStatus.textContent = array[book].opposite_status();
-        container.appendChild(title);
-        container.appendChild(author);
-        container.appendChild(pages);
-        container.appendChild(readStatus);
-        container.appendChild(changeReadStatus);
-        container.appendChild(del);
-        document.getElementById('main').appendChild(container);
-    }
-}
+  // eslint-disable-next-line guard-for-in
+  // eslint-disable-next-line no-restricted-syntax
 
-function update(book) {
+  for (let i = 0; i < array.length; i += 1) {
     const container = document.createElement('div');
-    container.id = "container-" + book.id;
+    container.id = `container-${array[i].id}`;
     const title = document.createElement('p');
     const author = document.createElement('p');
     const pages = document.createElement('p');
     const del = document.createElement('button');
-    const readStatus = document.createElement('p');
     const changeReadStatus = document.createElement('button');
-    del.textContent = "Delete book";
-    del.id = "button-" + book.id;
-    del.classList = "delete";
-    changeReadStatus.classList = "read"
-    readStatus.id = "p-read-" + book.id;
-    changeReadStatus.id = "readButton-" + book.id;
-    title.textContent = book.title;
-    author.textContent = book.author;
-    pages.textContent = book.number_pages;
-    readStatus.textContent = book.check_read();
-    changeReadStatus.textContent = book.opposite_status();
+    const readStatus = document.createElement('p');
+    del.textContent = 'Delete book';
+    del.classList = 'delete';
+    changeReadStatus.classList = 'read';
+    readStatus.id = `p-read-${array[i].id}`;
+    changeReadStatus.id = `readButton-${array[i].id}`;
+    del.id = `button-${array[i].id}`;
+    title.textContent = array[i].title;
+    author.textContent = array[i].author;
+    pages.textContent = array[i].number_pages;
+    readStatus.textContent = array[i].check_read();
+    changeReadStatus.textContent = array[i].opposite_status();
     container.appendChild(title);
     container.appendChild(author);
     container.appendChild(pages);
@@ -56,34 +30,62 @@ function update(book) {
     container.appendChild(changeReadStatus);
     container.appendChild(del);
     document.getElementById('main').appendChild(container);
-    document.getElementById(del.id).addEventListener("click", function (e) {
-        e = e.target || el.srcElement;
-        let k = e.id.substring(7, b.length);
-        deleteBook(k);
-    })
-    document.getElementById(changeReadStatus.id).addEventListener("click", function (e) {
-        e = e.target || el.srcElement;
-        let b = e.id;
-        console.log(b);
-        let k = b.substring(11, b.length);
-        console.log(k)
-        let object = findObject(k);
-        object.toggle_read();
-        console.log(object);
-        updateReadStatus(object);
-    })
+  }
+}
 
+// eslint-disable-next-line no-unused-vars
+function update(book) {
+  const container = document.createElement('div');
+  container.id = `container-${book.id}`;
+  const title = document.createElement('p');
+  const author = document.createElement('p');
+  const pages = document.createElement('p');
+  const del = document.createElement('button');
+  const readStatus = document.createElement('p');
+  const changeReadStatus = document.createElement('button');
+  del.textContent = 'Delete book';
+  del.id = `button-${book.id}`;
+  del.classList = 'delete';
+  changeReadStatus.classList = 'read';
+  readStatus.id = `p-read-${book.id}`;
+  changeReadStatus.id = `readButton-${book.id}`;
+  title.textContent = book.title;
+  author.textContent = book.author;
+  pages.textContent = book.number_pages;
+  readStatus.textContent = book.check_read();
+  changeReadStatus.textContent = book.opposite_status();
+  container.appendChild(title);
+  container.appendChild(author);
+  container.appendChild(pages);
+  container.appendChild(readStatus);
+  container.appendChild(changeReadStatus);
+  container.appendChild(del);
+  document.getElementById('main').appendChild(container);
+  document.getElementById(del.id).addEventListener('click', (e) => {
+    e = e.target;
+    const k = e.id.substring(7, e.id.length);
+    // eslint-disable-next-line no-use-before-define
+    deleteBook(k);
+  });
+  document.getElementById(changeReadStatus.id).addEventListener('click', (e) => {
+    e = e.target;
+    const b = e.id;
+    const k = b.substring(11, b.length);
+    // eslint-disable-next-line no-undef
+    const object = findObject(k);
+    object.toggle_read();
+    // eslint-disable-next-line no-use-before-define
+    updateReadStatus(object);
+  });
 }
 
 function deleteBook(book) {
-    console.log("title")
-    console.log(book);
-    console.log("executed");
-    document.getElementById('container-' + book).remove();
-    deleteArray(book);
+  document.getElementById(`container-${book}`).remove();
+  // eslint-disable-next-line no-undef
+  deleteArray(book);
 }
 
 function updateReadStatus(book) {
-    document.getElementById('p-read-' + book.id).textContent = book.check_read();
-    document.getElementById('readButton-' + book.id).textContent = book.opposite_status();
+  document.getElementById(`p-read-${book.id}`).textContent = book.check_read();
+  document.getElementById(`readButton-${book.id}`).textContent = book.opposite_status();
 }
