@@ -19,10 +19,10 @@
 <p align="center">
   
 
-  <h3 class ="norse" align="center" style="@font-face {font-family: 'Norse'; src: url('/fonts/Norse.otf'); font-family:'Norse'}">Project 9: Library</h3>
+  <h3 class ="norse" align="center" style="@font-face {font-family: 'Norse'; src: url('/fonts/Norse.otf'); font-family:'Norse'}">Project 1: Library</h3>
 
   <p align="center">
-    A social scaffold
+    Small Library app
     <br />
     <br />
   </p>
@@ -36,11 +36,8 @@
 - [About The Project](#about-the-project)
   - [Built With](#built-with)
 - [Getting Started](#getting-started)
-  - [Prerequisites](#prerequisites)
   - [Installation](#installation)
 - [Usage](#usage)
-  - [Testing](#testing)
-- [Credits](#credits)
 - [Contact](#contact)
 
 <!-- ABOUT THE PROJECT -->
@@ -49,37 +46,23 @@
 
 
 
-[Microverse](https://www.microverse.org/) Ruby on Rails Capstone Project "Group our transactions"
+[Microverse](https://www.microverse.org/) This is the very first project of the Javascript module. It is preceded by the lesson about Objects and the Object Constructor.
 
-Project: Ruby on Rails Capstone Project: Group our transactions. [Assignment link](https://www.notion.so/Group-our-transactions-ccea2b6642664540a70de9f30bdff4ce)
+Project: JavaScript project, small library app. [Assignment link](https://www.theodinproject.com/courses/javascript/lessons/library)
 
 Visit the finished project website: https://whispering-basin-25539.herokuapp.com
 <div style="text-align:center">
-  <a href="https://whispering-basin-25539.herokuapp.com">
-      <img src="app/assets/images/app.jpg" width="50%">
+  <a href="https://rawcdn.githack.com/jdmartinez1062/Library/tree/feature/library">
+      <img src="screenshot.png" width="100%">
   </a>
 </div>
 
 ### Built With
 
-- [Ruby](https://www.ruby-lang.org)
-- [Ruby on Rails](https://rubyonrails.org/)
+- [JavScrip](https://www.javascript.com)
 
 ## Getting Started
 
-### Prerequisites
-
-
-* Windows
-```sh
-https://www.ruby-lang.org/es/documentation/installation/#rubyinstaller
-https://gorails.com/setup/windows/10
-```
-* Ubuntu 18.04
-```sh
-sudo apt-get install ruby-full
-gem install rails -v 5.2.4.3
-```
 ### Installation
 
 1. Clone the repo
@@ -90,34 +73,27 @@ git clone https://github.com/jdmartinez1062/Library
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-1. Visit the web page
+1. Open local server.
+
+2. Click the button "Add a new book"
+
+3. Fill in the proper inputs as requested.
+
+4. Click on "Submit a book to the library".
+
+5. To change the status of "Read or Not" click on the "Change to" button.
    
-        https://whispering-basin-25539.herokuapp.com
-
-2. Log in or create a new user if you don't have one.
-
-3. To access time spents and external time spents for your user do it through the profile page. To access a group time spents do it on that group's page by searching for it in the "All groups" link.
-   
-4. To create a new group follow the "All Groups" link and click on "create new".   
-
-5. To create a new time spent click on the menu and on "New Transaction". You will need to have created a group previously to be able to select a group. 
-
-### Testing
-
-To test the app run the following command in the console:
-
-        rspec 
-
-## Credits
-This app was inspired on a design idea by [Gregoire Vella on Behance](https://www.behance.net/gregoirevella)
-
-<!-- CONTACT -->
+6. To delete a book from the library, click on "Delete book".
 
 ## Contact
 
 Juan David Martínez Cubillos - jd.martinez1062@gmail.com
 
+Carlos Henrique da Veiga - carlosveigadev@gmail.com
+
 Project Link: [https://github.com/jdmartinez1062/Library](https://github.com/jdmartinez1062/Library)
+
+
 
 <!-- ACKNOWLEDGEMENTS -->
 
