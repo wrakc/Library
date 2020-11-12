@@ -26,7 +26,8 @@ Book.prototype.opposite_status = function () {
 
 
 Book.prototype.toggle_read = function () {
-    this.read ? false : true;
+    console.log(this.read ? false : true)
+    this.read = this.read ? false : true;
 }
 
 Book.prototype.info = function () {
@@ -46,8 +47,8 @@ function newBook() {
     let author = document.getElementById('author').value;
     let pages = document.getElementById('pages').value;
     let read = document.getElementById('read').value;
-    let id = checkFirstId(myLibrary);  
-    changeReadValue(read);
+    let id = checkFirstId(myLibrary);
+    read = changeReadValue(read);
     const bookNew = new Book(title, author, pages, read, id);
     addBookToLibrary(bookNew);
     form = document.getElementById("form");
@@ -62,9 +63,9 @@ function showForm() {
 
 function changeReadValue(value) {
     if (value == 'true') {
-        value = true;
+        return true;
     } else {
-        value = false;
+        return false;
     };
 }
 
@@ -76,8 +77,9 @@ function checkFirstId(element) {
     }
 }
 
-function deleteArray(book) {
-    myLibrary.indexOf(book.title);
+function deleteArray(index) {
+    book = findObject(index);
+    myLibrary.splice(book.id, 1);
 }
 
 document.getElementById("btn-library").addEventListener("click", newBook);
@@ -88,8 +90,10 @@ function deleteDiv(e) {
     e = e.target || e.srcElement;
     let b = e.id;
     let k = b.substring(7, b.length);
+    console.log("K")
+    console.log(k)
     deleteBook(k);
-    deleteArray(k);
+
 };
 
 addBookToLibrary(a);
@@ -100,16 +104,26 @@ displayBooks(myLibrary);
 objects = Array.from(document.getElementsByClassName("delete"));
 objectsRead = Array.from(document.getElementsByClassName("read"));
 
+function findObject(k) {
+    for (var i = 0; i < myLibrary.length; i++) {
+        if (myLibrary[i].id == k) {
+            return myLibrary[i];
+        }
+    }
+}
 for (var i = 0; i < objects.length; i++) {
     document.getElementById(objects[i].id).addEventListener("click", deleteDiv);
     document.getElementById(objectsRead[i].id).addEventListener("click", function (e) {
         e = e.target || e.srcElement;
-        myLibrary.indexOf('')
         console.log(e);
-        e.toggle_read();
+        // e.toggle_read();
         let b = e.id;
         console.log(b);
-        let k = b.substring(10, b.length);
-        updateReadStatus(k)
+        let k = b.substring(11, b.length);
+        console.log(k)
+        let object = findObject(k);
+        object.toggle_read();
+        console.log(object);
+        updateReadStatus(object);
     });
 };

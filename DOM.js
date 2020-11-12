@@ -1,7 +1,7 @@
 function displayBooks(array) {
     for (let book in array) {
         const container = document.createElement('div');
-        container.id = "container-" + array[book].title.replace(/\s+/g, '');
+        container.id = "container-" + array[book].id;
         const title = document.createElement('p');
         const author = document.createElement('p');
         const pages = document.createElement('p');
@@ -11,9 +11,9 @@ function displayBooks(array) {
         del.textContent = "Delete book";
         del.classList = "delete";
         changeReadStatus.classList = "read"
-        readStatus.id = "p-read-" + array[book].title.replace(/\s+/g, '');
-        changeReadStatus.id = "readButton-" + array[book].title.replace(/\s+/g, '');
-        del.id = "button-" + array[book].title.replace(/\s+/g, '');
+        readStatus.id = "p-read-" + array[book].id;
+        changeReadStatus.id = "readButton-" + array[book].id;
+        del.id = "button-" + array[book].id;
         title.textContent = array[book].title;
         author.textContent = array[book].author;
         pages.textContent = array[book].number_pages;
@@ -31,7 +31,7 @@ function displayBooks(array) {
 
 function update(book) {
     const container = document.createElement('div');
-    container.id = "container-" + book.title.replace(/\s+/g, '');
+    container.id = "container-" + book.id;
     const title = document.createElement('p');
     const author = document.createElement('p');
     const pages = document.createElement('p');
@@ -39,11 +39,11 @@ function update(book) {
     const readStatus = document.createElement('p');
     const changeReadStatus = document.createElement('button');
     del.textContent = "Delete book";
-    del.id = "button-" + book.title.replace(/\s+/g, '');
+    del.id = "button-" + book.id;
     del.classList = "delete";
     changeReadStatus.classList = "read"
-    readStatus.id = "p-read-" + book.title.replace(/\s+/g, '');
-    changeReadStatus.id = "readButton-" + book.title.replace(/\s+/g, '');
+    readStatus.id = "p-read-" + book.id;
+    changeReadStatus.id = "readButton-" + book.id;
     title.textContent = book.title;
     author.textContent = book.author;
     pages.textContent = book.number_pages;
@@ -61,6 +61,18 @@ function update(book) {
         let k = e.id.substring(7, b.length);
         deleteBook(k);
     })
+    document.getElementById(changeReadStatus.id).addEventListener("click", function (e) {
+        e = e.target || el.srcElement;
+        let b = e.id;
+        console.log(b);
+        let k = b.substring(11, b.length);
+        console.log(k)
+        let object = findObject(k);
+        object.toggle_read();
+        console.log(object);
+        updateReadStatus(object);
+    })
+
 }
 
 function deleteBook(book) {
@@ -68,9 +80,10 @@ function deleteBook(book) {
     console.log(book);
     console.log("executed");
     document.getElementById('container-' + book).remove();
+    deleteArray(book);
 }
 
 function updateReadStatus(book) {
-    document.getElementById('p-read-' + book).textContent = book.check_read();
-    document.getElementById('readButton-' + book).textContent = book.opposite_status();
+    document.getElementById('p-read-' + book.id).textContent = book.check_read();
+    document.getElementById('readButton-' + book.id).textContent = book.opposite_status();
 }
