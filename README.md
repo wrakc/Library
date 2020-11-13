@@ -59,7 +59,7 @@ Visit the finished project website: https://raw.githack.com/jdmartinez1062/Libra
 
 ### Built With
 
-- [JavScrip](https://www.javascript.com)
+- [JavaScript](https://www.javascript.com)
 
 ## Getting Started
 
