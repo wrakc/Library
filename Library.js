@@ -1,21 +1,21 @@
 const myLibrary = [];
 
-(function() {
-  const library = {
-    init: function() {
-      this.cacheDom();
-    },
-    cacheDom: function() {
-      document.getElementById('new-book').addEventListener('click', showForm);
-      function showForm() {
-        const form = document.getElementById('form');
-        form.classList.toggle('hidden');
-      }
-    },
-  }
 
-  library.init();
-})();
+const library = {
+  init() {
+    this.cacheDom();
+  },
+  cacheDom() {
+    function showForm() {
+      const form = document.getElementById('form');
+      form.classList.toggle('hidden');
+    }
+    document.getElementById('new-book').addEventListener('click', showForm);
+  },
+};
+
+library.init();
+
 
 function Book(title, author, numberPages, read, id) {
   this.title = title;
@@ -94,8 +94,6 @@ function findObject(k) {
   }
   return null;
 }
-
-
 
 
 // eslint-disable-next-line no-unused-vars
